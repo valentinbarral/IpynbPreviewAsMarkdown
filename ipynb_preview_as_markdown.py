@@ -51,23 +51,19 @@ class PreviewIpynbAsMarkdownCommand(sublime_plugin.WindowCommand):
                     elif cell['cell_type'] == 'code':
                         markdown_content += '```python\n' + ''.join(cell['source']) + '\n```\n\n'
                 
-                # Ccreate a split view and show Markdown content
-                self.show_markdown_in_split_view(markdown_content)
+                # Create a new window to show the preview son the user's layout remain untouched
+                self.show_markdown_in_new_window(markdown_content)
                 
             except Exception as e:
                 sublime.error_message("Error processing .ipynb file: " + str(e))
         else:
             sublime.error_message("The current file is not an .ipynb file.")
 
-    def show_markdown_in_split_view(self, markdown_content):
-        self.window.run_command('set_layout', {
-                    "cols": [0, 0.5, 1],
-                    "rows": [0, 1],
-                    "cells": [[0, 0, 1, 1], [1, 0, 2, 1]]
-                })
-        markdown_view = self.window.new_file()
-        markdown_view.set_scratch(True)
-        markdown_view.set_name("Ipynb preview as Markdown")
-        markdown_view.set_syntax_file('Packages/Markdown/Markdown.sublime-syntax')
-        markdown_view.run_command('append', {'characters': markdown_content})
-        markdown_view.set_read_only(True)
+    def show_markdown_in_new_window(self, markdown_content):
+        new_window = sublime.run_command('new_window')
+        new_view = sublime.active_window().new_file()
+        new_view.set_scratch(True)
+        new_view.set_name("Ipynb preview as Markdown")
+        new_view.set_syntax_file('Packages/Markdown/Markdown.sublime-syntax')
+        new_view.run_command('append', {'characters': markdown_content})
+        new_view.set_read_only(True)

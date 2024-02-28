@@ -32,7 +32,7 @@ To use the "Ipynb Preview as Markdown" plugin:
 1. Open a `.ipynb` file in Sublime Text.
 2. Open the Command Palette using `Shift+Ctrl+P` (or `Cmd+Shift+P` on macOS).
 3. Type "Preview ipynb as Markdown" and select the command when it appears.
-4. A split view will open with the original `.ipynb` file on the left and the Markdown preview on the right. The preview is read-only and cannot be edited.
+4. A new window will open with the Markdown preview. The preview is read-only and cannot be edited.
 
 ## License
 
