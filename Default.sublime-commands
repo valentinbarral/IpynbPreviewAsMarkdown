@@ -1,6 +1,22 @@
 [
     {
         "caption": "Preview ipynb as Markdown",
-        "command": "preview_ipynb_as_markdown"
-    }
+        "command": "preview_ipynb_as_markdown",
+        "args": { "show_code": "True", "show_output":"True"}
+    }, 
+    {
+        "caption": "Preview ipynb as Markdown (No output)",
+        "command": "preview_ipynb_as_markdown",
+        "args": { "show_code": "True", "show_output":"False"}
+    }, 
+    {
+        "caption": "Preview ipynb as Markdown (No code)",
+        "command": "preview_ipynb_as_markdown",
+        "args": { "show_code": "False", "show_output":"True"}
+    }, 
+    {
+        "caption": "Preview ipynb as Markdown (No code, No output)",
+        "command": "preview_ipynb_as_markdown",
+        "args": { "show_code": "False", "show_output":"False"}
+    },
 ]
